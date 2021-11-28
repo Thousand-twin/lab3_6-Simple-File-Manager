@@ -9,6 +9,11 @@ import com.simplemobiletools.filemanager.pro.helpers.RootHelpers
 import kotlinx.android.synthetic.main.dialog_create_new.view.*
 import java.io.File
 import java.io.IOException
+import com.simplemobiletools.commons.activities.BaseSimpleActivity
+import com.simplemobiletools.commons.dialogs.FilePickerDialog
+import com.simplemobiletools.commons.extensions.*
+import com.simplemobiletools.filemanager.pro.extensions.config
+import kotlinx.android.synthetic.main.dialog_compress_as.view.*
 
 class CreateNewItemDialog(val activity: SimpleActivity, val path: String, val callback: (success: Boolean) -> Unit) {
     private val view = activity.layoutInflater.inflate(R.layout.dialog_create_new, null)
@@ -17,6 +22,7 @@ class CreateNewItemDialog(val activity: SimpleActivity, val path: String, val ca
         AlertDialog.Builder(activity)
                 .setPositiveButton(R.string.ok, null)
                 .setNegativeButton(R.string.cancel, null)
+                .setNeutralButton("Neutral",null)
                 .create().apply {
                     activity.setupDialogStuff(view, this, R.string.create_new) {
                         showKeyboard(view.item_name)
